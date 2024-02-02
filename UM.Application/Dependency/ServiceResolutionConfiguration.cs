@@ -13,6 +13,7 @@ namespace UM.Application.Dependency
             services.AddScoped<ICurrentUser, CurrentUser>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
 
             return services;
         }
