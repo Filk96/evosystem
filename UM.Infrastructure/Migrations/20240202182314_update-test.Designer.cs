@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UM.Infrastructure.DBContext;
 
@@ -11,9 +12,11 @@ using UM.Infrastructure.DBContext;
 namespace UM.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240202182314_update-test")]
+    partial class updatetest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -310,6 +313,9 @@ namespace UM.Infrastructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime");
 
+                    b.Property<int>("DepartamentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
@@ -336,7 +342,7 @@ namespace UM.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("DepartamentId");
 
                     b.ToTable("Employee");
                 });
@@ -485,13 +491,13 @@ namespace UM.Infrastructure.Migrations
 
             modelBuilder.Entity("UM.Domain.DBModel.Funcionario", b =>
                 {
-                    b.HasOne("UM.Domain.DBModel.Departamento", "Department")
+                    b.HasOne("UM.Domain.DBModel.Departamento", "Departament")
                         .WithMany("Funcionarios")
-                        .HasForeignKey("DepartmentId")
+                        .HasForeignKey("DepartamentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Department");
+                    b.Navigation("Departament");
                 });
 
             modelBuilder.Entity("UM.Domain.DBModel.UserRole", b =>

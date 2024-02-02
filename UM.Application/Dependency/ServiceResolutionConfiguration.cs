@@ -14,6 +14,7 @@ namespace UM.Application.Dependency
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
             return services;
         }
