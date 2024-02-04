@@ -8,5 +8,6 @@ namespace UM.Domain.ViewModel
         public string Foto { get; set; }
         public string RG { get; set; }
         public int DepartmentId { get; set; }
+        public string Department { get; set; }
     }
 }

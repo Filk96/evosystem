@@ -13,6 +13,7 @@ namespace UM.Domain.Mapping
             CreateMap<Funcionario, EmployeeModel>()
                 .ReverseMap();
             CreateMap<Funcionario, EmployeeViewModel>()
+                .ForMember(u => u.Department, opt => opt.MapFrom(x => x.Department.Name))
                 .ReverseMap();
         }
     }

@@ -1,21 +1,25 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using UM.Application.IService;
 using UM.Domain.DBModel;
 using UM.Domain.IRepository;
 using UM.Domain.Model;
 using UM.Domain.ViewModel;
+using UM.Infrastructure.DBContext;
 
 namespace UM.Application.Service
 {
     public class EmployeeService : IEmployeeService
     {
+        private readonly ApplicationDbContext _context;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IMapper _mapper;
 
-        public EmployeeService(IEmployeeRepository employeeRepository, IMapper mapper)
+        public EmployeeService(IEmployeeRepository employeeRepository, IMapper mapper, ApplicationDbContext context)
         {
             _employeeRepository = employeeRepository;
             _mapper = mapper;
+            _context = context;
         }
         public async Task Add(EmployeeModel employee)
         {
@@ -32,7 +36,7 @@ namespace UM.Application.Service
 
         public async Task<List<EmployeeViewModel>> GetAll()
         {
-            var result = await _employeeRepository.GetAll();
+            var result = await _context.Employee.Include(x => x.Department).ToListAsync();
             var data = _mapper.Map<List<EmployeeViewModel>>(result);
             return data;
         }
