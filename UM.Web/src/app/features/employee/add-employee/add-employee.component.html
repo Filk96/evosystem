@@ -1,0 +1,63 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Add Employee</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Employee</li>
+          <li class="breadcrumb-item active">Add</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" id="Name" name="Name" placeholder="Name" required [(ngModel)]="emp.name">
+              </div>
+              <div class="form-group">
+                <label for="Foto">Foto</label>
+                <input type="text" class="form-control" id="Foto" name="Foto" placeholder="Foto" required [(ngModel)]="emp.foto">
+              </div>
+              <div class="form-group">
+                <label for="RG">RG</label>
+                <input type="text" class="form-control" id="RG" name="RG" placeholder="RG" required [(ngModel)]="emp.rg">
+              </div>
+              <div class="form-group">
+                <label>Department</label>
+                <select id="department" name="department" class="form-control" [(ngModel)]="emp.department" >
+                  <option *ngFor="let item of dept; let i = index" [selected]="i === 0" [value]="item.id">{{item.name}}</option>
+                </select>
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" (click)="addEmployee()" class="btn btn-primary">Add</button>
+              {{emp.department}}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
