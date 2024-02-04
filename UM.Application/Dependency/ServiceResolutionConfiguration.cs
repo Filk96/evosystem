@@ -9,10 +9,7 @@ namespace UM.Application.Dependency
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IOtpService, OtpService>();
             services.AddScoped<ICurrentUser, CurrentUser>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
 

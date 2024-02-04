@@ -8,9 +8,6 @@ namespace UM.Infrastructure.Dependency
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IOtpRepository, OtpRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             return services;

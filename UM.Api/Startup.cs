@@ -2,7 +2,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using FluentValidation.AspNetCore;
-using UM.Api.Authentication;
 using UM.Api.Dependency;
 using UM.Api.Middleware;
 using UM.Application.Dependency;
@@ -57,9 +56,8 @@ namespace UM.Api
             services.AddServices();
             services.AddRepositories();
             services.ApplicationServices();
-            services.TokenAuthentication(Configuration);
 
-            services.AddAutoMapper(typeof(ApplicationUserMapping).Assembly);
+            services.AddAutoMapper(typeof(DepartmentMapping).Assembly);
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
